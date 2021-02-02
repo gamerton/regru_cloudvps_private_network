@@ -1,0 +1,23 @@
+- hosts: all
+  any_errors_fatal: true
+  roles:
+    - role: mrlesmithjr.netplan
+      become: yes
+      # This role will do nothing unless netplan_enabled is true.
+      netplan_enabled: true
+
+      netplan_config_file: /etc/netplan/config.yaml
+
+      netplan_renderer: networkd
+      #Most important line to not delete exists network
+      netplan_remove_existing: false
+      netplan_apply: True
+      
+      netplan_configuration:
+        network:
+          version: 2
+          ethernets:
+            eth1:
+              addresses:
+                - "{{ ip }}/24"
+              mtu: 1450
