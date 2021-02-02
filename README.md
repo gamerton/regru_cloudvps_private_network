@@ -7,6 +7,8 @@ git clone https://github.com/gamerton/regru_cloudvps_private_network.git
 
 
 cd regru_cloudvps_private_network
+
+# installing ansible galaxy module used in playbook
 ansible-galaxy install mrlesmithjr.netplan
 
 edit inventory file
